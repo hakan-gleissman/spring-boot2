@@ -13,6 +13,7 @@ public class HelloController {
 
     @PostMapping
     public ResponseEntity<String> post(@RequestBody String message) {
+        System.out.println("post method");
         return ResponseEntity.<String>ok("OK");
     }
 
