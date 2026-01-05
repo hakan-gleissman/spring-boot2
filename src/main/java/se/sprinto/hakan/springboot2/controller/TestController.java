@@ -10,6 +10,6 @@ public class TestController {
     @GetMapping
     public String test() {
 
-        return "Hello from Spring Boot updated 3!";
+        return "Nu då?";
     }
 }
