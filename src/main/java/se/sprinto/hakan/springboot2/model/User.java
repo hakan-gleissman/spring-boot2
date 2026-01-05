@@ -1,7 +1,8 @@
 package se.sprinto.hakan.springboot2.model;
 
-
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "app_user")
@@ -13,8 +14,7 @@ public class User {
 
     @Column(unique = true, nullable = false)
     private String username;
-
-    @Column(unique = true, nullable = false)
+    
     private String password;
 
     private String role;
@@ -29,18 +29,11 @@ public class User {
 
     private String email;
 
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Post> posts;
+
     public User() {
-    }
-
-    public User(String username, String password, String role,
-                String displayName, String profileImagePath, String bio) {
-
-        this.username = username;
-        this.password = password;
-        this.role = role;
-        this.displayName = displayName;
-        this.profileImagePath = profileImagePath;
-        this.bio = bio;
     }
 
     public Long getId() {
@@ -107,13 +100,13 @@ public class User {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", displayName='" + displayName + '\'' +
-                '}';
+    public List<Post> getPosts() {
+        return posts;
     }
-}
 
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    // getters & setters
+}

@@ -1,19 +1,27 @@
 package se.sprinto.hakan.springboot2.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "post")
 public class Post {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String text;
+
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    public Post() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id")   // ägande sida
+    private User user;
 
-    public Post(Long id, String text, LocalDateTime createdAt) {
-        this.id = id;
-        this.text = text;
-        this.createdAt = createdAt;
+    public Post() {
     }
 
     public Long getId() {
@@ -39,5 +47,16 @@ public class Post {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    // getters & setters
 }
+
 
