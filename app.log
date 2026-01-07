@@ -1,0 +1,13 @@
+2026-01-06 21:09:40.683 INFO  [main] s.s.h.s.SpringBoot2Application - Starting SpringBoot2Application using Java 21.0.4 with PID 80228 (/Users/hakangleissman/Java-systematisk-Jensen-2025-java-projects/spring-boot2/target/classes started by hakangleissman in /Users/hakangleissman/Java-systematisk-Jensen-2025-java-projects/spring-boot2)
+2026-01-06 21:09:40.684 INFO  [main] s.s.h.s.SpringBoot2Application - No active profile set, falling back to 1 default profile: "default"
+2026-01-06 21:09:44.431 INFO  [main] s.s.h.s.SpringBoot2Application - Started SpringBoot2Application in 4.019 seconds (process running for 4.646)
+2026-01-06 21:10:32.570 INFO  [main] s.s.h.s.SpringBoot2Application - Starting SpringBoot2Application using Java 21.0.4 with PID 80417 (/Users/hakangleissman/Java-systematisk-Jensen-2025-java-projects/spring-boot2/target/classes started by hakangleissman in /Users/hakangleissman/Java-systematisk-Jensen-2025-java-projects/spring-boot2)
+2026-01-06 21:10:32.571 INFO  [main] s.s.h.s.SpringBoot2Application - No active profile set, falling back to 1 default profile: "default"
+2026-01-06 21:10:35.911 INFO  [main] s.s.h.s.SpringBoot2Application - Started SpringBoot2Application in 3.608 seconds (process running for 4.075)
+2026-01-06 21:11:21.582 INFO  [http-nio-8080-exec-2] s.s.hakan.springboot2.util.AppLogger - Hello from Spring Boot!
+2026-01-06 21:11:21.583 INFO  [http-nio-8080-exec-2] s.s.hakan.springboot2.util.AppLogger - Executing HelloController hello
+2026-01-06 21:13:17.907 INFO  [main] s.s.h.s.SpringBoot2Application - Starting SpringBoot2Application using Java 21.0.4 with PID 80990 (/Users/hakangleissman/Java-systematisk-Jensen-2025-java-projects/spring-boot2/target/classes started by hakangleissman in /Users/hakangleissman/Java-systematisk-Jensen-2025-java-projects/spring-boot2)
+2026-01-06 21:13:17.909 INFO  [main] s.s.h.s.SpringBoot2Application - No active profile set, falling back to 1 default profile: "default"
+2026-01-06 21:13:21.015 INFO  [main] s.s.h.s.SpringBoot2Application - Started SpringBoot2Application in 3.347 seconds (process running for 3.791)
+2026-01-06 21:13:44.823 INFO  [http-nio-8080-exec-2] s.s.hakan.springboot2.util.AppLogger - Hello from Spring Boot!
+2026-01-06 21:13:44.824 INFO  [http-nio-8080-exec-2] s.s.hakan.springboot2.util.AppLogger - Executing HelloController hello

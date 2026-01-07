@@ -14,7 +14,7 @@ public class User {
 
     @Column(unique = true, nullable = false)
     private String username;
-    
+
     private String password;
 
     private String role;
@@ -108,5 +108,6 @@ public class User {
         this.posts = posts;
     }
 
+    
     // getters & setters
 }
