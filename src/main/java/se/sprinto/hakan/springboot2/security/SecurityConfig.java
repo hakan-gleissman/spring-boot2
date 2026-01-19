@@ -56,7 +56,7 @@ public class SecurityConfig {
                 "http://localhost:5174",
                 "http://localhost:5175",
                 "http://localhost:3000",
-                "https://full-minni-sprinto3-0981d1c6.koyeb.app/"
+                "https://full-minni-sprinto3-0981d1c6.koyeb.app"
                 //TODO: öppna upp för frontend på koyeb
                 //ungefär: "https://your-frontend-domain.com"
         ));
