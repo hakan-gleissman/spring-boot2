@@ -1,5 +1,7 @@
 package se.sprinto.hakan.springboot2.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se.sprinto.hakan.springboot2.dto.PostRequestDTO;
 import se.sprinto.hakan.springboot2.dto.PostResponseDTO;
@@ -38,8 +40,18 @@ public class PostService {
     }
 
     // READ ALL
-    public List<Post> getAllPosts() {
-        return postRepository.findAll();
+    public Page<Post> getAllPosts(Pageable page) {
+        return postRepository.findAll(page);
+    }
+
+    public List<PostResponseDTO> getPosts() {
+        return postRepository.findAll().stream()
+                .map(post -> new PostResponseDTO(
+                        post.getId(),
+                        post.getText(),
+                        post.getCreatedAt()
+                ))
+                .toList();
     }
 
     // READ ONE

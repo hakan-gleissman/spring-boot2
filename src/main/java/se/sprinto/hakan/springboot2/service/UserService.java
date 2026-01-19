@@ -47,17 +47,8 @@ public class UserService {
 
     public List<UserResponseDto> getAllUsers() {
         List<User> users = userRepository.findAll();
-        return users.stream()
-                .map(user -> new UserResponseDto(
-                        user.getId(),
-                        user.getUsername(),
-                        user.getEmail(),
-                        user.getRole(),
-                        user.getDisplayName(),
-                        user.getBio(),
-                        user.getProfileImagePath()
-                ))
-                .toList();
+      
+        return users.stream().map(user -> userMapper.toDto(user)).toList();
     }
 
     public UserResponseDto getById(Long id) {

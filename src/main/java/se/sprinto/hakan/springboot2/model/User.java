@@ -108,6 +108,6 @@ public class User {
         this.posts = posts;
     }
 
-    
+
     // getters & setters
 }

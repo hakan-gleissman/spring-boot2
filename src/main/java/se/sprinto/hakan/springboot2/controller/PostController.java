@@ -1,6 +1,10 @@
 package se.sprinto.hakan.springboot2.controller;
 
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.sprinto.hakan.springboot2.dto.PostRequestDTO;
@@ -20,19 +24,30 @@ public class PostController {
         this.postService = postService;
     }
 
-    // GET: Hämta alla inlägg
     @GetMapping
     public ResponseEntity<List<PostResponseDTO>> getPosts() {
+        // This method seems to be incomplete in the provided snippet.
+        return ResponseEntity.ok(postService.getPosts());
+    }
 
-        List<Post> posts = postService.getAllPosts();
+    // GET: Hämta alla inlägg
 
-        List<PostResponseDTO> response = posts.stream()
-                .map(post -> new PostResponseDTO(
+    public ResponseEntity<Page<PostResponseDTO>> getPosts(
+            @PageableDefault(
+                    size = 3,
+                    sort = "createdAt",
+                    direction = Sort.Direction.DESC
+            ) Pageable pageable) {
+
+        Page<Post> posts = postService.getAllPosts(pageable);
+
+        Page<PostResponseDTO> response = posts.map(post ->
+                new PostResponseDTO(
                         post.getId(),
                         post.getText(),
                         post.getCreatedAt()
-                ))
-                .toList();
+                )
+        );
 
         return ResponseEntity.ok(response);
     }
