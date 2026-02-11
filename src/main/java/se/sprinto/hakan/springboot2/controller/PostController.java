@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import se.sprinto.hakan.springboot2.dto.PostRequestDTO;
 import se.sprinto.hakan.springboot2.dto.PostResponseDTO;
+import se.sprinto.hakan.springboot2.mapper.UserMapper;
 import se.sprinto.hakan.springboot2.model.Post;
 import se.sprinto.hakan.springboot2.service.PostService;
 
@@ -19,9 +20,11 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+    private UserMapper userMapper;
 
-    public PostController(PostService postService) {
+    public PostController(PostService postService, UserMapper userMapper) {
         this.postService = postService;
+        this.userMapper = userMapper;
     }
 
     @GetMapping
@@ -45,7 +48,8 @@ public class PostController {
                 new PostResponseDTO(
                         post.getId(),
                         post.getText(),
-                        post.getCreatedAt()
+                        post.getCreatedAt(),
+                        userMapper.toDto(post.getUser())
                 )
         );
 
@@ -62,7 +66,8 @@ public class PostController {
         PostResponseDTO response = new PostResponseDTO(
                 post.getId(),
                 post.getText(),
-                post.getCreatedAt()
+                post.getCreatedAt(),
+                userMapper.toDto(post.getUser())
         );
 
         return ResponseEntity.ok(response);
@@ -79,7 +84,8 @@ public class PostController {
         PostResponseDTO response = new PostResponseDTO(
                 updated.getId(),
                 updated.getText(),
-                updated.getCreatedAt()
+                updated.getCreatedAt(),
+                userMapper.toDto(updated.getUser())
         );
 
         return ResponseEntity.ok(response);

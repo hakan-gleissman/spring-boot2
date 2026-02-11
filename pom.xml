@@ -10,7 +10,7 @@
     </parent>
     <groupId>se.sprinto.hakan</groupId>
     <artifactId>spring-boot2</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>spring-boot2</name>
     <description>spring-boot2</description>
     <url/>
