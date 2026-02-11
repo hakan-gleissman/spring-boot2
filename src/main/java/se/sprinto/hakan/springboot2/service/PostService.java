@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import se.sprinto.hakan.springboot2.dto.PostRequestDTO;
 import se.sprinto.hakan.springboot2.dto.PostResponseDTO;
+import se.sprinto.hakan.springboot2.mapper.UserMapper;
 import se.sprinto.hakan.springboot2.model.Post;
 import se.sprinto.hakan.springboot2.model.User;
 import se.sprinto.hakan.springboot2.repository.PostRepository;
@@ -19,10 +20,12 @@ public class PostService {
 
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public PostService(PostRepository postRepository, UserRepository userRepository) {
+    public PostService(PostRepository postRepository, UserRepository userRepository, UserMapper userMapper) {
         this.postRepository = postRepository;
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     // CREATE
@@ -36,7 +39,7 @@ public class PostService {
 
         post.setUser(user);
         Post fromDb = postRepository.save(post);
-        return new PostResponseDTO(fromDb.getId(), fromDb.getText(), fromDb.getCreatedAt());
+        return new PostResponseDTO(fromDb.getId(), fromDb.getText(), fromDb.getCreatedAt(), userMapper.toDto(fromDb.getUser()));
     }
 
     // READ ALL
@@ -49,7 +52,8 @@ public class PostService {
                 .map(post -> new PostResponseDTO(
                         post.getId(),
                         post.getText(),
-                        post.getCreatedAt()
+                        post.getCreatedAt(),
+                        userMapper.toDto(post.getUser())
                 ))
                 .toList();
     }

@@ -38,7 +38,7 @@ public class UserService {
         user.setEmail(dto.email());
 
         User saved = userRepository.save(user);
-        return UserResponseDto.fromEntity(saved);
+        return userMapper.toDto(user);
     }
 
     public void delete(Long id) {
@@ -47,7 +47,14 @@ public class UserService {
 
     public List<UserResponseDto> getAllUsers() {
         List<User> users = userRepository.findAll();
-      
+        //affärslogik som vi vill testa
+        if (users.isEmpty()) {
+            throw new RuntimeException("Inga användare hittade");
+        } else if (users.size() == 1) {
+            throw new IllegalArgumentException("Endast en användare hittades");
+        }
+        //slut affärslogik
+
         return users.stream().map(user -> userMapper.toDto(user)).toList();
     }
 

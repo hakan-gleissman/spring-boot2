@@ -50,7 +50,8 @@ public class UserMapper {
                 .map(p -> new PostResponseDTO(
                         p.getId(),
                         p.getText(),
-                        p.getCreatedAt()
+                        p.getCreatedAt(),
+                        toDto(p.getUser())
                 ))
                 .toList();
 
