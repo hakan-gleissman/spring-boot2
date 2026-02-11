@@ -18,4 +18,6 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 )
 public class OpenAPIConfig {
     //ingen kod, endast annoteringarna behövs
+
+    //kommentar
 }
